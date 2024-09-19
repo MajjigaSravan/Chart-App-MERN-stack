@@ -7,11 +7,12 @@ import meassageRoutes from "./routes/message.routes.js"
 import userRoutes from "./routes/user.routes.js";
 
 import connectTOMongoDB from "./db/connectToMongoDB.js";
+import { app,server } from "./socket/socket.js";
 
- const app=express();
+ 
  const PORT=process.env.PORT || 5000;
 
- dotenv.config();
+ dotenv.config(); 
 
  app.use(express.json());
  app.use(cookieParser());
@@ -26,7 +27,7 @@ import connectTOMongoDB from "./db/connectToMongoDB.js";
  });
 
 
- app.listen(PORT,()=>{
+ server.listen(PORT,()=>{
     connectTOMongoDB();
     console.log(`sever is running on port ${PORT}`);
 });
